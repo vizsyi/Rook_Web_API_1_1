@@ -1,0 +1,24 @@
+# dependencies
+
+# Compiled source
+Rook01_08/bin
+
+# ASP.NET Core Web API project template
+Rook01_08/obj
+Rook01_08/Properties
+
+# Secret keys
+Rook01_08/appsettings.json
+Rook01_08/appsettings.Development.json
+
+#Work maps
+Logs
+Migrations
+
+# misc
+.vs
+.dockerignore
+Rook01_08.sln
+Rook01_08.csproj
+Rook01_08/Dockerfile
+*.http
