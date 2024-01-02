@@ -1,3 +1,5 @@
+using Rook01_08.Middlewares;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -14,6 +16,11 @@ if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
+}
+else
+{
+    //app.UseExceptionHandler("/Error");
+    app.UseCustomExceptionHandlingMiddleware();
 }
 
 app.UseHttpsRedirection();
