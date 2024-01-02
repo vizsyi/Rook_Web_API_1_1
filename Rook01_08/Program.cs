@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using Rook01_08.Data;
 using Rook01_08.Data.EF;
 using Rook01_08.Middlewares;
 using Rook01_08.Models.Auth;
@@ -55,5 +56,7 @@ app.UseHttpsRedirection();
 app.UseAuthorization();
 
 app.MapControllers();
+
+ApplicationDBInitializer.Seed(app).Wait();
 
 app.Run();
