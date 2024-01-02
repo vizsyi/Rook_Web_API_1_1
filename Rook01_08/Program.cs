@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Rook01_08.Data;
+using Rook01_08.Data.Dapper;
 using Rook01_08.Data.EF;
 using Rook01_08.Middlewares;
 using Rook01_08.Models.Auth;
@@ -32,6 +33,9 @@ builder.Services.Configure<IdentityOptions>(options => {
 
     options.SignIn.RequireConfirmedEmail = true;
 });
+
+//Program services
+builder.Services.AddScoped<DapperDBContext>();
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
