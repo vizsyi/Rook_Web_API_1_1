@@ -4,6 +4,7 @@ using Rook01_08.Data;
 using Rook01_08.Data.EF;
 using Rook01_08.Middlewares;
 using Rook01_08.Models.Auth;
+using Rook01_08.Services.EMail;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -57,6 +58,7 @@ app.UseAuthorization();
 
 app.MapControllers();
 
+GMailer.SetMailbox(builder.Configuration);
 ApplicationDBInitializer.Seed(app).Wait();
 
 app.Run();
