@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Rook01_08.Models.Auth;
+using Rook01_08.Models.Auth.Tokens;
 
 namespace Rook01_08.Data.EF
 {
@@ -10,6 +11,8 @@ namespace Rook01_08.Data.EF
         public ApplicationDBContext(DbContextOptions options) : base(options)
         {
         }
+
+        public DbSet<RefreshToken> RefreshToken { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -43,6 +46,13 @@ namespace Rook01_08.Data.EF
                 .HasColumnType("varchar").HasMaxLength(32);
             modelBuilder.Entity<IdentityRole>().Property(x => x.NormalizedName)
                 .HasColumnType("varchar").HasMaxLength(32);
+
+            //     //RefreshToken
+            modelBuilder.Entity<RefreshToken>().Property(x => x.UserKey).HasColumnType("char");
+
+            modelBuilder.Entity<RefreshToken>().Property(x => x.SecKey).HasColumnType("char");
+
+            modelBuilder.Entity<RefreshToken>().Property(x => x.LongToken).HasColumnType("char");
 
         }
     }
