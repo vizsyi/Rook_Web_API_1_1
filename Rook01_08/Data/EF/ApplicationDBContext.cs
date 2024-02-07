@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Rook01_08.Models.Auth;
 using Rook01_08.Models.Auth.Tokens;
+using Rook01_08.Models.Celeb;
 
 namespace Rook01_08.Data.EF
 {
@@ -13,6 +14,11 @@ namespace Rook01_08.Data.EF
         }
 
         public DbSet<RefreshToken> RefreshToken { get; set; }
+
+
+        public DbSet<Profession> Profession { get; set; }
+
+        public DbSet<Celeb> Celeb { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -54,6 +60,18 @@ namespace Rook01_08.Data.EF
 
             modelBuilder.Entity<RefreshToken>().Property(x => x.LongToken).HasColumnType("char");
 
+            //Celeb
+            modelBuilder.Entity<Profession>()
+                .ToTable("Profession", schema: "Celeb");
+
+            modelBuilder.Entity<Celeb>()
+                .ToTable("Celeb", schema: "Celeb");
+
+            modelBuilder.Entity<Celeb>().Property(x => x.Id)
+                .HasColumnType("char");
+
+            modelBuilder.Entity<Celeb>().Property(x => x.PhotoFile)
+                .HasColumnType("char");
         }
     }
 }
